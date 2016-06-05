@@ -61,6 +61,25 @@ class TestDataValidation:
         diff = compare_xml(xml, expected)
         assert diff is None, diff
 
+    def test_writer_validation_dropdown(self, DataValidation):
+
+        class DummyCell:
+
+            coordinate = "A1"
+
+        dv = DataValidation(
+            type="list", formula1='"Dog,Cat,Fish"', showDropDown=True)
+        dv.add(DummyCell())
+
+        xml = tostring(dv.to_tree())
+        expected = """
+        <dataValidation allowBlank="0" showErrorMessage="1" showInputMessage="1" showDropDown="1" sqref="A1" type="list">
+          <formula1>&quot;Dog,Cat,Fish&quot;</formula1>
+        </dataValidation>
+        """
+        diff = compare_xml(xml, expected)
+        assert diff is None, diff
+
 
     def test_sqref(self, DataValidation):
         dv = DataValidation()
