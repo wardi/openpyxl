@@ -135,7 +135,8 @@ class DataValidation(Serialisable):
         self.prompt = prompt
         self.errorTitle = errorTitle
         self.__attrs__ = ('type', 'allowBlank', 'operator', 'sqref',
-                          'showInputMessage', 'showErrorMessage', 'errorTitle', 'error',
+                          'showInputMessage', 'showErrorMessage',
+                          'showDropDown', 'errorTitle', 'error',
                           'errorStyle', 'promptTitle', 'prompt')
 
 
