@@ -72,6 +72,7 @@ class DataValidation(Serialisable):
 
     showErrorMessage = Bool()
     showDropDown = Bool(allow_none=True)
+    show_drop_down = Bool(allow_none=True)
     showInputMessage = Bool()
     showErrorMessage = Bool()
     allowBlank = Bool()
@@ -112,9 +113,13 @@ class DataValidation(Serialisable):
                  errorTitle=None,
                  imeMode=None,
                  operator=None,
+                 show_drop_down=None,
                  ):
 
         self.showDropDown = showDropDown
+        if showDropDown is None and show_drop_down is not None:
+            # in xlsx showDropDown=True means Hide the drop down. yeah.
+            self.showDropDown = not show_drop_down
         self.imeMode = imeMode
         self.operator = operator
         self.formula1 = formula1

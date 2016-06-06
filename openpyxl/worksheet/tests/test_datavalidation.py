@@ -68,7 +68,7 @@ class TestDataValidation:
             coordinate = "A1"
 
         dv = DataValidation(
-            type="list", formula1='"Dog,Cat,Fish"', showDropDown=True)
+            type="list", formula1='"Dog,Cat,Fish"', show_drop_down=False)
         dv.add(DummyCell())
 
         xml = tostring(dv.to_tree())
